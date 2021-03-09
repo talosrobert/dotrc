@@ -1,0 +1,25 @@
+---
+- import_tasks: pre.yml
+
+- name: Get latest Whitesur release.
+  uri:
+    url: "{{ url_gtk_theme_repo }}"
+    return_contect: yes
+  register: json_response
+
+- name: Download latest Whitesur release.
+  get_url:
+    url: "{{ json_response.json.tarball_url }}"
+    dest: "files/whitesur_latest.tar"
+
+- name: Create tmp subfolder
+  file:
+    mode: "0755"  
+    state: directory
+    path: "tmp/whitesur"
+
+- name: Unpack Whitesur tar file.
+  unarchive:
+    dest: "tmp/whitesur/"
+    src: "files/whitesur_latest.tar"
+    
