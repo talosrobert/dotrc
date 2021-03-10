@@ -4,9 +4,8 @@
     name: ["sassc","optipng","inkscape"]
     state: latest
 
+## Ubuntu 20
 - name: Download GTK2 engine requirements.
   package:
-    name: ["gtk2-engine-murrine","gtk2-engines-pixbuf","libglib2.0-dev-bin"]
+    name: ["gtk2-engines-murrine","gtk2-engines-pixbuf","libglib2.0-dev-bin"]
     state: latest
-
-
