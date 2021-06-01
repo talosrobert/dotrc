@@ -9,7 +9,7 @@
     gpgkey: https://packages.microsoft.com/keys/microsoft.asc
     state: present
 
-- name: Add Visual Studio Code repo.
+- name: Add MS Edge Beta repo.
   yum_repository:
     name: "microsoft-edge-beta"
     baseurl: https://packages.microsoft.com/yumrepos/edge/
