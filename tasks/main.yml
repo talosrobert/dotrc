@@ -1,24 +1,11 @@
 ---
 - import_tasks: pre.yml
+- import_tasks: user.yml
 
-- name: Create tmp subfolder
-  file:
-    mode: "0755"  
-    state: directory
-    path: "{{ tmp_dir }}"
-
-- name: Get latest Whitesur release.
-  uri:
-    url: "{{ url_gtk_theme_repo }}"
-    return_content: yes
-  register: json_response
-
-- name: Download latest Whitesur release.
-  get_url:
-    url: "{{ json_response.json.tarball_url }}"
-    dest: "{{ tmp_dir }}/whitesur_latest.tar"
-
-- name: Unpack Whitesur tar file.
-  unarchive:
-    dest: "{{ tmp_dir }}"
-    src: "{{ tmp_dir }}/whitesur_latest.tar"
+- name: Add vimrc to home folder.
+  copy:
+    src: "files/vimrc"
+    dest: "/home/{{ user_name }}/.vimrc"
+    owner: "{{ user_name }}"
+    group: "{{ user_name }}"
+    mode: "0600"

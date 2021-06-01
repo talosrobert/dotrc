@@ -1,0 +1,6 @@
+---
+- name: Add user to wireshark group.
+  user:
+    append: yes
+    groups: ["wireshark"]
+    name: "{{ user_name }}"

@@ -1,11 +1,31 @@
 ---
-- name: Download dependencies.
-  package:
-    name: ["sassc","optipng","inkscape"]
-    state: latest
+- name: Add Visual Studio Code repo.
+  yum_repository:
+    name: "visual-studio-code"
+    baseurl: https://packages.microsoft.com/yumrepos/vscode
+    file: vscode
+    enabled: yes
+    gpgcheck: yes
+    gpgkey: https://packages.microsoft.com/keys/microsoft.asc
+    state: present
 
-## Ubuntu 20
-- name: Download GTK2 engine requirements.
-  package:
-    name: ["gtk2-engines-murrine","gtk2-engines-pixbuf","libglib2.0-dev-bin"]
+- name: Add Visual Studio Code repo.
+  yum_repository:
+    name: "microsoft-edge-beta"
+    baseurl: https://packages.microsoft.com/yumrepos/edge/
+    file: vscode
+    enabled: yes
+    gpgcheck: yes
+    gpgkey: https://packages.microsoft.com/keys/microsoft.asc
+    state: present
+
+- name: Update all packages.
+  dnf:
+    name: '*'
+    state: latest
+    update_cache: yes
+
+- name: Install favourite apps.
+  dnf:
+    name: ["vim", "qbittorrent", "wireshark", "@virtualization", "code", "microsoft-edge-beta"]
     state: latest
