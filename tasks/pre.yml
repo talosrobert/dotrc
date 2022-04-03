@@ -11,9 +11,9 @@
 
 - name: Add MS Edge Beta repo.
   yum_repository:
-    name: "microsoft-edge-beta"
+    name: "microsoft-edge"
     baseurl: https://packages.microsoft.com/yumrepos/edge/
-    file: vscode
+    file: edge
     enabled: yes
     gpgcheck: yes
     gpgkey: https://packages.microsoft.com/keys/microsoft.asc
@@ -27,5 +27,5 @@
 
 - name: Install favourite apps.
   dnf:
-    name: ["vim", "qbittorrent", "wireshark", "@virtualization", "code", "microsoft-edge-beta"]
+    name: ["vim", "qbittorrent", "wireshark", "@virtualization", "code", "microsoft-edge-stable"]
     state: latest
