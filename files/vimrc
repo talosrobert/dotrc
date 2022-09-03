@@ -3,8 +3,8 @@ syntax on
 set number
 set linebreak
 set laststatus=2
-set noshowmode
 set wildmenu
+set background=dark
 
 "" Indentation
 set autoindent
@@ -21,27 +21,3 @@ set incsearch
 set ignorecase
 set smartcase
 set hlsearch
-
-"" LightLine
-if !has('gui_running')
-  set t_Co=256
-endif
-
-let g:lightline = {
-  \ 'colorscheme': 'PaperColor',
-  \ 'component_function': {
-  \   'gitbranch': 'FugitiveHead'
-  \   },
-  \ }
-
-"" Colorscheme
-let g:PaperColor_Theme_Options = {
-  \ 'theme': {
-  \   'default': {
-  \     'transparent_background': 1
-  \     }
-  \   }
-  \ }
-
-colorscheme PaperColor
-set background=dark
